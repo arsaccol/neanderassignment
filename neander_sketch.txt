@@ -1,16 +1,18 @@
 ;	ZERAR VARIAVEIS
 ;	1o passo: zerar AC
 		LDA
-		131	;	carregar um
+		131			;	carregar um
 		NOT
-		AND	;
-		131	;	AC zerado
+		AND			;
+		131			;	AC zerado
 
 ;	2o passo: armazenar 0 do AC nas variaveis
 		STA
-		129	;	zera saida inteira
+		129			;	zera saida inteira
 		STA
-		129	;	zera saida fracionaria
+		129			;	zera saida fracionaria
+		STA
+		M_VAR		;	zera 
 
 
 ;	ENTRADA NEGATIVA
@@ -19,14 +21,14 @@
 
 ;	{negativo}
 		LDA	
-		132	;	carrega MENOS_UM
+		132			;	carrega MENOS_UM
 		STA
-		129	;	armazena	saida inteira
+		129			;	armazena	saida inteira
 		LDA
-		131	;	carrega ZERO
+		131			;	carrega ZERO
 		STA
-		129	;	armazenar	saida fracionaria
-		HLT	;	fim
+		129			;	armazenar	saida fracionaria
+		HLT			;	fim
 
 
 
@@ -35,14 +37,14 @@
 
 
 
-128:	XX	; 	const. 	entrada
-129:	00	;	saida 	parte inteira
-130:	00	;	saida 	parte fracionaria
-131:	00	;	const.	ZERO
-131:	01	;	const. 	UM
-132:	255	;	const.	MENOS_UM
-133:	XX	;	var.	M_VAR
-134:	XX	;	var.	CONTADOR
-135:	XX	;	var.	IMPAR
-136:	XX	;	var.	FRACAO_VAR
-137:	XX	;	var.	I
+128:	XX			; 	const. 	entrada
+129:	00			;	saida 	parte inteira
+130:	00			;	saida 	parte fracionaria
+131:	00			;	const.	ZERO
+131:	01			;	const. 	UM
+132:	255			;	const.	MENOS_UM
+133:	XX			;	var.	M_VAR
+134:	XX			;	var.	CONTADOR
+135:	XX			;	var.	IMPAR
+136:	XX			;	var.	FRACAO_VAR
+137:	XX			;	var.	I

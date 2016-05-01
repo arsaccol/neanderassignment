@@ -38,7 +38,7 @@
 128:	XX	; 	const. 	entrada
 129:	00	;	saida 	parte inteira
 130:	00	;	saida 	parte fracionaria
-131		00	;	const.	ZERO
+131:	00	;	const.	ZERO
 131:	01	;	const. 	UM
 132:	255	;	const.	MENOS_UM
 133:	XX	;	var.	M_TEMP

@@ -41,4 +41,8 @@
 131:	00	;	const.	ZERO
 131:	01	;	const. 	UM
 132:	255	;	const.	MENOS_UM
-133:	XX	;	var.	M_TEMP
+133:	XX	;	var.	M_VAR
+134:	XX	;	var.	CONTADOR
+135:	XX	;	var.	IMPAR
+136:	XX	;	var.	FRACAO_VAR
+137:	XX	;	var.	I

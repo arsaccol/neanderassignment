@@ -1,0 +1,47 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;::::::::::::: #AREA DE DADOS ;;;;;;;;;;
+
+128:	000	;	entrada_m
+129:	000	;	saida_contador
+130:	000	;	saida_fracao
+131:	001	;	const_MENOS_UM
+132:	000	;	const_ZERO
+133:	255	;	const_UM
+134:	010	;	const_DOIS
+135:	000	;	var_contador
+136:	000	;	var_m
+137:	000	;	var_impar
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;	#FIM NEGATIVO
+240:	LDA
+241:	132
+242:	STA
+243:	129	;	saida_contador recebe const_ZERO
+244:	LDA
+245:	131
+246:	STA
+247:	130	;	saida_fracao recebe const_MENOS_UM
+248:	HLT	;	FIM
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;	ZERAR AC
+000:	LDA	
+001:	132	;	carregar zero
+;	ZERAR_VARS
+002:	STA
+003:	135	;	zera var_contador
+004:	STA
+005:	136	;	zera var_m
+006:	STA
+007:	137	;	zera var_impar
+;	CARREGAR entrada_m
+008:	LDA
+009:	128	;	carrega entrada_m
+;	CHECAR NEGATIVO
+010:	JZ
+011:	240	;	pula para #FIM NEGATIVO
+
+;	

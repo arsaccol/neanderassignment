@@ -11,6 +11,7 @@
 135:	000	;	var_contador
 136:	000	;	var_m
 137:	000	;	var_impar
+138:	000	;	var_temp
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;	#FIM NEGATIVO
@@ -37,11 +38,30 @@
 005:	136	;	zera var_m
 006:	STA
 007:	137	;	zera var_impar
+008:	STA
+009:	138	;	zera var_temp
 ;	CARREGAR entrada_m
-008:	LDA
-009:	128	;	carrega entrada_m
-;	CHECAR NEGATIVO
-010:	JZ
-011:	240	;	pula para #FIM NEGATIVO
+010:	LDA
+012:	128	;	carrega entrada_m
+;	CHECAR M NEGATIVO
+013:	JN
+014:	240	;	pula para #FIM NEGATIVO
 
-;	
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;	#PARTE INTEIRA
+015:	LDA
+016:	133	;	carrega const_UM
+017:	STA
+018:	137	;	initializa var_impar com UM
+019:	LDA
+020:	132 ;	carrega const_ZERO
+021:	STA
+022:	135	;	initializa var_contador com ZERO
+023:	LDA
+024:	128	;	carrega entrada_m para usar como variavel
+025:	STA
+026:	136	;	salva entrada_m em var_m para realizar calculos
+
+;	#LOOP PARTE INTEIRA
+;	TESTAR var_m >= impar
+022:	

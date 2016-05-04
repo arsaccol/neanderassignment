@@ -46,46 +46,63 @@
 
 ;	CARREGAR entrada_m
 012:	LDA
-014:	128	;	carrega entrada_m
+013:	128	;	carrega entrada_m
 ;	CHECAR M NEGATIVO
-015:	JN
-016:	240	;	pula para #FIM NEGATIVO
+014:	JN
+015:	240	;	pula para #FIM NEGATIVO
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;	#PARTE INTEIRA
-017:	LDA
-018:	133	;	carrega const_UM
-019:	STA
-020:	137	;	initializa var_impar com UM
-021:	LDA
-022:	132 ;	carrega const_ZERO
-023:	STA
-024:	135	;	initializa var_contador com ZERO
-025:	LDA
-026:	128	;	carrega entrada_m para usar como variavel
-027:	STA
-028:	136	;	salva entrada_m em var_m para realizar calculos
+016:	LDA
+017:	133	;	carrega const_UM
+018:	STA
+019:	137	;	initializa var_impar com UM
+020:	LDA
+021:	132 ;	carrega const_ZERO
+022:	STA
+023:	135	;	initializa var_contador com ZERO
+024:	LDA
+025:	128	;	carrega entrada_m para usar como variavel
+026:	STA
+027:	136	;	salva entrada_m em var_m para realizar calculos
 
 ;	#LOOP PARTE INTEIRA
 ;	TESTAR (var_m >= var_impar) <- basta testar se var_m - impar eh negativo
-029:	LDA
-030:	137	;	carrega var_impar
-031:	NOT	
-032:	ADD
-033:	133	;	AC = -var_impar
-034:	STA
-035:	139	;	salva -var_impar em var_temp
-036:	LDA
-037:	136	;	carrega var_m
-038:	ADD
-039:	139	;	AC = var_m - (-var_impar)
+028:	LDA
+029:	137	;	carrega var_impar
+030:	NOT	
+031:	ADD
+032:	133	;	AC = -var_impar
+033:	STA
+034:	139	;	salva -var_impar em var_temp
+035:	LDA
+036:	136	;	carrega var_m
+037:	ADD
+038:	139	;	AC = var_m - (-var_impar)
+;	teste do loop inteiro de fato
+039:	JN
+040:	61	;	se var_m >= var_impar, pula para o loop fracionario
+;	CORPO DO LOOP
+041:	LDA	
+042:	136	;	carrega var_m
+043:	ADD
+044:	139	;	AC = var_m - var_impar (-var_impar esta em var_temp)
+045:	STA
+046:	136	;	var_m -= var_impar
+047:	LDA
+048:	137	;	carrega var_impar
+049:	ADD
+050:	134	;	AC = var_impar + 2
+051:	STA
+052:	137	;	var_impar += 2
+053:	LDA
+054:	135	;	carrega var_contador
+055:	ADD
+056:	133	;	AC = var_contador + 1
+057:	STA
+058:	135
+059:	JMP
+060:	028	;	VOLTA PARA O COMECO DO LOOP INTEIRO
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;	COMPLETAR AQUI
-040:	JN
-041:		;	se var_m >= var_impar, pula para o fim do loop
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;	COMPLETAR AQUI
-
-;	#CORPO DO LOOP
-042:	
+;	TESTE PARTE INTEIRA
+061:	HLT

@@ -11,7 +11,8 @@
 135:	000	;	var_contador
 136:	000	;	var_m
 137:	000	;	var_impar
-138:	000	;	var_temp
+138:	000	;	var_fracao
+139:	000	;	var_temp
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;	#FIM NEGATIVO
@@ -39,49 +40,52 @@
 006:	STA
 007:	137	;	zera var_impar
 008:	STA
-009:	138	;	zera var_temp
+009:	138	;	zera var_fracao
+010:	STA
+011:	139	;	zera var_temp
+
 ;	CARREGAR entrada_m
-010:	LDA
-012:	128	;	carrega entrada_m
+012:	LDA
+014:	128	;	carrega entrada_m
 ;	CHECAR M NEGATIVO
-013:	JN
-014:	240	;	pula para #FIM NEGATIVO
+015:	JN
+016:	240	;	pula para #FIM NEGATIVO
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;	#PARTE INTEIRA
-015:	LDA
-016:	133	;	carrega const_UM
-017:	STA
-018:	137	;	initializa var_impar com UM
-019:	LDA
-020:	132 ;	carrega const_ZERO
-021:	STA
-022:	135	;	initializa var_contador com ZERO
-023:	LDA
-024:	128	;	carrega entrada_m para usar como variavel
-025:	STA
-026:	136	;	salva entrada_m em var_m para realizar calculos
+017:	LDA
+018:	133	;	carrega const_UM
+019:	STA
+020:	137	;	initializa var_impar com UM
+021:	LDA
+022:	132 ;	carrega const_ZERO
+023:	STA
+024:	135	;	initializa var_contador com ZERO
+025:	LDA
+026:	128	;	carrega entrada_m para usar como variavel
+027:	STA
+028:	136	;	salva entrada_m em var_m para realizar calculos
 
 ;	#LOOP PARTE INTEIRA
 ;	TESTAR (var_m >= var_impar) <- basta testar se var_m - impar eh negativo
-028:	LDA
-029:	137	;	carrega var_impar
-030:	NOT	
-031:	ADD
-032:	133	;	AC = -var_impar
-033:	STA
-034:	138	;	salva -var_impar em var_temp
-035:	LDA
-036:	136	;	carrega var_m
-037:	ADD
-038:	138	;	AC = var_m - (-var_impar)
+029:	LDA
+030:	137	;	carrega var_impar
+031:	NOT	
+032:	ADD
+033:	133	;	AC = -var_impar
+034:	STA
+035:	139	;	salva -var_impar em var_temp
+036:	LDA
+037:	136	;	carrega var_m
+038:	ADD
+039:	139	;	AC = var_m - (-var_impar)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;	COMPLETAR AQUI
-039:	JN
-040:		;	se var_m >= var_impar, pula para o fim do loop
+040:	JN
+041:		;	se var_m >= var_impar, pula para o fim do loop
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;	COMPLETAR AQUI
 
 ;	#CORPO DO LOOP
-041:	
+042:	

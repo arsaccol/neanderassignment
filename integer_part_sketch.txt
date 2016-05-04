@@ -4,10 +4,10 @@
 128:	000	;	entrada_m
 129:	000	;	saida_contador
 130:	000	;	saida_fracao
-131:	001	;	const_MENOS_UM
+131:	255	;	const_MENOS_UM
 132:	000	;	const_ZERO
-133:	255	;	const_UM
-134:	010	;	const_DOIS
+133:	001	;	const_UM
+134:	002	;	const_DOIS
 135:	000	;	var_contador
 136:	000	;	var_m
 137:	000	;	var_impar
@@ -63,5 +63,25 @@
 026:	136	;	salva entrada_m em var_m para realizar calculos
 
 ;	#LOOP PARTE INTEIRA
-;	TESTAR var_m >= impar
-022:	
+;	TESTAR (var_m >= var_impar) <- basta testar se var_m - impar eh negativo
+028:	LDA
+029:	137	;	carrega var_impar
+030:	NOT	
+031:	ADD
+032:	133	;	AC = -var_impar
+033:	STA
+034:	138	;	salva -var_impar em var_temp
+035:	LDA
+036:	136	;	carrega var_m
+037:	ADD
+038:	138	;	AC = var_m - (-var_impar)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;	COMPLETAR AQUI
+039:	JN
+040:		;	se var_m >= var_impar, pula para o fim do loop
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;	COMPLETAR AQUI
+
+;	#CORPO DO LOOP
+041:	

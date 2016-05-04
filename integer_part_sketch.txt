@@ -17,13 +17,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;	#FIM NEGATIVO
 240:	LDA
-241:	132
+241:	132	;	carrega const_ZERO
 242:	STA
-243:	129	;	saida_contador recebe const_ZERO
+243:	130	;	saida_fracao recebe const_ZERO
 244:	LDA
-245:	131
+245:	131	;	carrega const_MENOS_UM
 246:	STA
-247:	130	;	saida_fracao recebe const_MENOS_UM
+247:	129	;	saida_fracao recebe const_MENOS_UM
 248:	HLT	;	FIM
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -78,10 +78,10 @@
 035:	LDA
 036:	136	;	carrega var_m
 037:	ADD
-038:	139	;	AC = var_m - (-var_impar)
+038:	139	;	AC = var_m + (-var_impar)
 ;	teste do loop inteiro de fato
 039:	JN
-040:	61	;	se var_m >= var_impar, pula para o loop fracionario
+040:	63	;	se var_m >= var_impar, pula para o loop fracionario
 ;	CORPO DO LOOP
 041:	LDA	
 042:	136	;	carrega var_m
@@ -100,9 +100,11 @@
 055:	ADD
 056:	133	;	AC = var_contador + 1
 057:	STA
-058:	135
-059:	JMP
-060:	028	;	VOLTA PARA O COMECO DO LOOP INTEIRO
+058:	135	;	salva var_contador
+059:	STA
+060:	129	;	SALVA SAIDA saida_contador
+061:	JMP
+062:	028	;	VOLTA PARA O COMECO DO LOOP INTEIRO
 
 ;	TESTE PARTE INTEIRA
-061:	HLT
+063:	HLT

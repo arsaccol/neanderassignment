@@ -54,6 +54,7 @@ uint square_root(uint m, uint* out_fraction)
 {
 	uint frac_m = m;
 
+	// if m < 0
 	if(m > 127)
 	{
 		*out_fraction = 0;
